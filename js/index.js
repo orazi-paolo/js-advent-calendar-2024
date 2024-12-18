@@ -125,3 +125,34 @@ const source = [
         "url": "images/dance.gif"
     }
 ];
+
+// prendo il componente che contiene il calendario
+const calendar = document.getElementById('calendar');
+const box = document.getElementsByClassName('box');
+
+// creo una funzione per generare le caselle
+
+function generateCalendar() {
+    for (let i = 1; i <= 24; i++) {
+        // creo la casella
+        const box = document.createElement('div');
+        box.classList.add('box');
+
+        // creo l'elemento immagine per l'icona
+        const icon = document.createElement("img");
+        icon.classList.add("icon");
+        icon.src = `./images/icons/${source[i].icon}.png`;
+        icon.alt = i.icon;
+
+        // creo lo span per il numero
+        const number = document.createElement("span");
+        number.classList.add("number");
+        number.textContent = i;
+
+        box.appendChild(icon);
+        box.appendChild(number);
+        calendar.appendChild(box);
+    }
+}
+
+generateCalendar();
