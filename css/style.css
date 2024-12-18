@@ -1,12 +1,35 @@
 body{
     background-color: darkblue;
     color:white;
+    font-family: Livvic, sans-serif;
 }
 
 header {
-    height: 300px;
+    height: 250px;
         background:
-            url(../images/header-bg.png) center 50px / cover no-repeat,
+            url(../images/header-bg.png) center 15px / cover no-repeat,
             #2D28EB;
     border-radius: 0px 0px 40px 40px;
+}
+
+#calendar {
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.box{
+    font-size: 40px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: calc((100% / 8) - 10px);
+    background-color: #2E6753;
+    border-radius: 10px;
+}
+
+.box img{
+    height: 40px;
 }
