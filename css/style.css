@@ -1,0 +1,12 @@
+body{
+    background-color: darkblue;
+    color:white;
+}
+
+header {
+    height: 300px;
+        background:
+            url(../images/header-bg.png) center 50px / cover no-repeat,
+            #2D28EB;
+    border-radius: 0px 0px 40px 40px;
+}
