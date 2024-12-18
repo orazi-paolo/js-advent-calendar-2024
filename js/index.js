@@ -133,7 +133,7 @@ const box = document.getElementsByClassName('box');
 // creo una funzione per generare le caselle
 
 function generateCalendar() {
-    for (let i = 1; i <= 24; i++) {
+    for (let i = 1; i <= 25; i++) {
         // creo la casella
         const box = document.createElement('div');
         box.classList.add('box');
@@ -141,7 +141,7 @@ function generateCalendar() {
         // creo l'elemento immagine per l'icona
         const icon = document.createElement("img");
         icon.classList.add("icon");
-        icon.src = `./images/icons/${source[i].icon}.png`;
+        icon.src = `./images/icons/${source[i - 1].icon}.png`;
         icon.alt = i.icon;
 
         // creo lo span per il numero
@@ -152,6 +152,11 @@ function generateCalendar() {
         box.appendChild(icon);
         box.appendChild(number);
         calendar.appendChild(box);
+        // creo la tabella numero 25
+        if (i === 25) {
+            box.classList.add('last-box');
+            box.appendChild(lastIcon);
+        }
     }
 }
 
