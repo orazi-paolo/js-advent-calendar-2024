@@ -20,6 +20,7 @@ header {
 }
 
 .box{
+    cursor: pointer;
     font-size: 40px;
     font-weight: bold;
     display: flex;
@@ -28,6 +29,12 @@ header {
     width: calc((100% / 8) - 10px);
     background-color: #2E6753;
     border-radius: 10px;
+}
+
+.last-box{
+    background-color: #D5D6F5;
+    color: #2E6753;
+    flex-grow: 1;
 }
 
 .box img{
