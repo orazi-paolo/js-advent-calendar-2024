@@ -1,3 +1,4 @@
+// dichiaro l'array con dentro tutte le informazioni delle caselle
 const source = [
     {
         "type": "image",
@@ -125,13 +126,17 @@ const source = [
         "url": "images/dance.gif"
     }
 ];
-
-// prendo il componente che contiene il calendario
+// dichiaro la variabile per prendere i dati dal local storage
+const openedBoxes = JSON.parse(localStorage.getItem('openedBoxes')) || [];
+// prendo i componenti che mi servono dal dom
 const calendar = document.getElementById('calendar');
 const box = document.getElementsByClassName('box');
+const overlay = document.getElementById('modal-overlay');
+const modalBody = document.getElementById('modal-body');
+const closeButton = document.querySelector('.close-btn');
+const resetButton = document.getElementById('reset-button');
 
 // creo una funzione per generare le caselle
-
 function generateCalendar() {
     for (let i = 1; i <= 25; i++) {
         // creo la casella
@@ -141,6 +146,7 @@ function generateCalendar() {
         // creo l'elemento immagine per l'icona
         const icon = document.createElement("img");
         icon.classList.add("icon");
+        icon.classList.add("pt-1");
         icon.src = `./images/icons/${source[i - 1].icon}.png`;
         icon.alt = i.icon;
 
@@ -149,15 +155,73 @@ function generateCalendar() {
         number.classList.add("number");
         number.textContent = i;
 
+        // appendo gli elementi icon e number al box
         box.appendChild(icon);
         box.appendChild(number);
+
+        // appendo il box al calendario
         calendar.appendChild(box);
-        // creo la tabella numero 25
+
+        // se è la tabella numero 25 aggiungo la classe last-box
         if (i === 25) {
             box.classList.add('last-box');
-            box.appendChild(lastIcon);
         }
+
+        // se la casella è stata aperta aggiungo la classe opened
+        if (openedBoxes.includes(i)) {
+            box.classList.add('opened');
+        }
+
+        // al click sulla casella apro la modale
+        box.addEventListener('click', () => {
+            showModal(i - 1);
+            // aggiunto la classe opened
+            box.classList.add('opened');
+            // se la casella non è già stata aperta la aggiungo all'array del localstorage
+            if (!openedBoxes.includes(i)) {
+                openedBoxes.push(i);
+            }
+            // salvo l'array nel localstorage
+            localStorage.setItem('openedBoxes', JSON.stringify(openedBoxes))
+        });
     }
 }
 
+// creo la funzione per mostrare la modale
+function showModal(index) {
+    const item = source[index];
+    modalBody.innerHTML = '';
+
+    // se il tipo dell'item è un'immagine creo un elemento img
+    if (item.type === "image") {
+        const img = document.createElement("img");
+        img.src = item.url;
+        img.alt = "Random image";
+        img.style.maxWidth = "100%";
+        modalBody.appendChild(img);
+    } else if (item.type === "text") { // altrimenti creo un elemento p
+        const text = document.createElement("p");
+        text.textContent = item.text;
+        modalBody.appendChild(text);
+    }
+
+    // aggiungo la classe active all'overlay
+    overlay.classList.add("active");
+};
+
+// al click sulla x rimuovo la classe active per chiudere la modale
+closeButton.addEventListener('click', () => {
+    overlay.classList.remove('active');
+});
+
+// al click sul bottone reset elimino gli elementi salvati nel local storage
+resetButton.addEventListener('click', () => {
+    localStorage.removeItem('openedBoxes');
+
+    // rimuovo la classe opened da tutte le caselle
+    const allBoxes = document.querySelectorAll('.box');
+    allBoxes.forEach(box => box.classList.remove('opened'));
+});
+
+// genero il calendario
 generateCalendar();
