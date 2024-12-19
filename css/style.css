@@ -1,13 +1,13 @@
 body{
     background-color: darkblue;
     color:white;
-    font-family: Livvic, sans-serif;
+    font-family: 'Livvic', sans-serif;
 }
 
 header {
-    height: 250px;
+    height: 230px;
         background:
-            url(../images/header-bg.png) center 15px / cover no-repeat,
+            url(../images/header-bg.png) center 2px / cover no-repeat,
             #2D28EB;
     border-radius: 0px 0px 40px 40px;
 }
@@ -103,3 +103,31 @@ header {
     cursor: pointer;
     font-size: 20px;
 }
+
+@media (max-width: 1200px) {
+    header{
+        background:
+                url(../images/header-bg.png) center 10px / cover no-repeat,
+                #2D28EB;
+    }
+}
+
+@media (max-width: 850px) {
+    header{
+        background:
+                url(../images/header-bg.png) center 85px / cover no-repeat,
+                #2D28EB;
+    }
+}
+
+@media (max-width: 600px) {
+    header{
+        background:
+                url(../images/header-bg.png) center 85px / cover no-repeat,
+                #2D28EB;
+    }
+    .box{
+        width: calc((100% / 4) - 10px);
+    }
+}
+
