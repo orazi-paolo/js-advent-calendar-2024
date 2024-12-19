@@ -30,6 +30,9 @@ An interactive project that simulates an Advent calendar, developed with HTML, C
 2. Extract the contents and open the `index.html` file in a modern browser.
 3. Interact with the calendar by clicking on the boxes.
 
+### Link
+[Visita il sito live](https://orazi-paolo.github.io/js-advent-calendar-2024/)
+
 ## Customizations
 
 - Update the content of the boxes by editing the `source` array in `js/index.js`.
