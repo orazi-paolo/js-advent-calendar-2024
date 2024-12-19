@@ -30,6 +30,23 @@ header {
     background-color: #2E6753;
     border-radius: 10px;
 }
+.box.opened {
+    background-color: transparent;
+    cursor: default;
+}
+.box.opened:hover {
+    background-color: transparent;
+    color: white;
+    cursor: default;
+}
+.box:hover {
+    background-color: gray;
+    color: #2E6753;
+}
+
+.box.opened .icon {
+    opacity: 0.5;
+}
 
 .last-box{
     background-color: #D5D6F5;
@@ -39,4 +56,50 @@ header {
 
 .box img{
     height: 40px;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: #e78ab7;
+    color: black;
+    padding: 40px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 500px;
+    text-align: center;
+    position: relative;
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+}
+
+.overlay.active .modal-content {
+    transform: scale(1);
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
 }
