@@ -31,7 +31,7 @@ An interactive project that simulates an Advent calendar, developed with HTML, C
 3. Interact with the calendar by clicking on the boxes.
 
 ### Link
-[Visita il sito live](https://orazi-paolo.github.io/js-advent-calendar-2024/)
+[Visit the site online](https://orazi-paolo.github.io/js-advent-calendar-2024/)
 
 ## Customizations
 
